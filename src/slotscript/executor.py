@@ -1,6 +1,7 @@
 from .parser import Parser
 from .datatypes.Return import Return
 from .functions import Functions
+from .datatypes.TimeSlot import TimeSlot
 
 
 class Executor:
@@ -14,5 +15,8 @@ class Executor:
             if not return_value: continue
             if return_value.return_type == "replace":
                 parsed[idx:idx+1] = return_value.content
-        print(parsed)
+        final = []
+        for line in parsed:
+            final.append(TimeSlot.convert_from_line(line))
+        return final
 
