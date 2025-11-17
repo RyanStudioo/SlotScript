@@ -9,7 +9,7 @@ class Parser:
 
     @classmethod
     def parse(cls, script: str):
-        lines = script.split(";")
+        lines = script.split("\n")
         parsed = [cls._parse_line(line) for line in lines]
         return [i for i in parsed if i]
 
